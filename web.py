@@ -8,10 +8,18 @@ class Web:
         self.define_routes()
 
     security_headers = [
+            # Blocks page from being displayed in an iframe
             ("X-Frame-Options", "DENY"),
+            # Stops page loading if XSS detected (on some browsers)
+            # CSP takes care of this better if supported
             ("X-Xss-Protection", "1; mode=block"),
+            # MIME Type (e.g. Content-Type header) should be followed and not changed
             ("X-Content-Type-Options", "nosniff"),
+            # Controles how much information is passed in Referer header
+            # In this case, Referer header is omitted with no-referrer directive
             ("Referrer-Policy", "no-referrer"),
+            # An "User Agent" of sorts for the server
+            # Describes the software that handled the request
             ("Server", "Onion-Notes"),
         ]
 

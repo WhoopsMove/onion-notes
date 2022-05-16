@@ -25,10 +25,10 @@ class Tor:
 
         if result.service_id:
             self.tmp_service_id = result.service_id
-            print(" * Our service is available at %s.onion, press ctrl+c to quit" % self.tmp_service_id)
-            print(f"Private key: {self.key_str(auth_privkey)}")
+            print("--- The Onion Service is available at %s.onion, press ctrl+c to quit" % self.tmp_service_id)
+            print(f"--- Private key to be shared with the recipient: {self.key_str(auth_privkey)}")
         else:
-            print(" * Unable to determine our service's hostname, probably due to being unable to read the hidden service directory")
+            print("Something went wrong.")
 
     def remove_hidden_service(self):
         if self.tmp_service_id:
